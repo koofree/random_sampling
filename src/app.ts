@@ -5,7 +5,6 @@ import { createArrayCsvWriter } from 'csv-writer';
 const MAX_COUNT: number = 14674; // total candidates
 const DIST_COUNT: number = 50; // count of items to distribute
 const DIST_MEMBER_NAMES: Array<string> = ['Koo', 'Joey', 'Jay', 'Liam']; // members who is distributed
-const DIST_MEMBER: number = DIST_MEMBER_NAMES.length; // count of members
 const FILE_NAME: string = 'random_seed.csv'; // filename to export
 const RAMDOM_SEED: string | undefined = 'peertec.com'; // random seed (to export same samples)
 // ### End configurations
@@ -23,7 +22,7 @@ for (var i = 1; i <= MAX_COUNT; i++) {
 
 const shuffled = shuffle(values, RAMDOM_SEED);
 const allSamples = shuffled
-  .slice(0, DIST_COUNT * DIST_MEMBER)
+  .slice(0, DIST_COUNT * DIST_MEMBER_NAMES.length)
   .sort((a, b) => (a > b ? 1 : -1));
 
 const sample = (arr: Array<number>, x: number) =>
