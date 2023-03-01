@@ -1,11 +1,15 @@
-export function shuffle<T>(array: T[]): T[] {
+import seedrandom from 'seedrandom';
+
+export function shuffle<T>(array: T[], seed?: string): T[] {
+  const rand = seed ? seedrandom(seed) : Math.random;
+
   let currentIndex = array.length,
     randomIndex: number;
 
   // While there remain elements to shuffle.
   while (currentIndex != 0) {
     // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
+    randomIndex = Math.floor(rand() * currentIndex);
     currentIndex--;
 
     // And swap it with the current element.
